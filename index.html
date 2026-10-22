@@ -79,6 +79,8 @@
   .navlinks .pill::after{display:none}
   .navlinks .pill:hover{background:var(--gold);color:#1a1408}
   @media(max-width:760px){ .navlinks a:not(.pill){display:none} }
+  @media(max-width:480px){ .brand{font-size:15px;gap:9px} .navlinks .pill{padding:6px 11px;font-size:10.5px;white-space:nowrap} }
+  @media(max-width:359px){ .navlinks{display:none} }
 
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
@@ -178,6 +180,8 @@
   .proj ul{list-style:none;display:flex;flex-direction:column;gap:11px}
   .proj li{padding-left:22px;position:relative;color:var(--ink-dim);font-weight:300;font-size:14.5px;line-height:1.6}
   .proj li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:1px;background:var(--gold)}
+  .plink{color:var(--gold);border-bottom:1px solid var(--line);transition:color .25s,border-color .25s}
+  .plink:hover{color:var(--gold-bright);border-color:var(--gold)}
 
   /* skills */
   .skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:4px;overflow:hidden}
@@ -249,11 +253,12 @@
   <div class="hero-veil"></div>
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span>Open to AI / ML &amp; Quant internships</span>
-    <h1 class="name">Matthew&nbsp;Helton<br><em>mathematics</em>, in motion.</h1>
+    <h1 class="name">Matthew Helton<br><em>mathematics</em>, in motion.</h1>
     <p class="lede">PhD candidate in Mathematics at <strong>NYU Courant</strong>, building <strong>machine-learning and dynamical-systems</strong> models for high-dimensional data — from cortical circuits to deep networks trained from scratch.</p>
     <div class="hero-meta">
       <a href="mailto:matt.helton@nyu.edu"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>matt.helton@nyu.edu</a>
-      <a href="#" data-edit="linkedin"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3"/></svg>LinkedIn</a>
+      <a href="https://www.linkedin.com/in/matt-helton-8a530b99/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3"/></svg>LinkedIn</a>
+      <a href="https://github.com/msw1age" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
       <span><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Brooklyn, NY</span>
     </div>
   </div>
@@ -291,13 +296,14 @@
       <div class="tl-item reveal">
         <div class="xrow">
           <div class="xtop">
-            <span class="xrole">Machine Learning Researcher</span>
+            <span class="xrole">Graduate Researcher</span>
             <span class="xdate">2025 — Present</span>
           </div>
           <div class="xorg">Young Research Group <span class="at">·</span> NYU Courant Institute</div>
           <ul class="xpts">
-            <li>Built a dynamical model explaining surround suppression in the visual cortex, demonstrating the feasibility of a theoretical model in practice.</li>
-            <li>Applied optimization expertise to design advanced loss functions and minimization methods, producing a model that replicates key cortical phenomena.</li>
+            <li>Built a 136,000-neuron, 36-million-synapse spiking network model of macaque V1 (excitatory, PV and SOM cells) to test how SOM interneurons shape surround suppression. Manuscript in preparation.</li>
+            <li>Directed AI coding agents to optimize and port the simulator to the GPU: about 20,000× faster per simulation than the original code, with every change gated by statistical tests against a validated reference.</li>
+            <li>Calibrated about 45 parameters with staged Bayesian optimization (a GPU implementation of TPE) on a validated reduced surrogate.</li>
           </ul>
         </div>
       </div>
@@ -305,13 +311,14 @@
       <div class="tl-item reveal" data-d="1">
         <div class="xrow">
           <div class="xtop">
-            <span class="xrole">Machine Learning Researcher</span>
-            <span class="xdate">2022 — 2024</span>
+            <span class="xrole">Research Scientist</span>
+            <span class="xdate">2023 — 2024</span>
           </div>
           <div class="xorg">Shea-Brown Lab <span class="at">·</span> University of Washington</div>
           <ul class="xpts">
             <li>Engineered and benchmarked time-series models — including LSTMs — against baseline statistical methods for forecasting activity from the mouse brain.</li>
-            <li>Collaborated with PhD students and faculty via GitHub, contributing primary code implementations and incorporating feedback.</li>
+            <li>Developed a time-delay autoencoder with linear (Koopman) latent dynamics for neural forecasting, tested on Lorenz-96 and widefield imaging (<a class="plink" href="https://github.com/msw1age/TD_AE" target="_blank" rel="noopener">code</a>).</li>
+            <li>Analyzed widefield and Neuropixels recordings with dynamic mode decomposition and its variants (<a class="plink" href="https://github.com/msw1age/LND_notebooks" target="_blank" rel="noopener">notebooks</a>).</li>
           </ul>
         </div>
       </div>
@@ -329,8 +336,8 @@
         <span class="ptag">2025 · Self-Supervised Learning</span>
         <div class="pname">DINO — Implemented &amp; Trained from Scratch</div>
         <ul>
-          <li>Procured data for, implemented, and trained from scratch a DINO model with a Vision Transformer backbone and MLP head on a dataset of over two million images.</li>
-          <li>Achieved top-5 classification accuracy on held-out test data in a class-wide competition.</li>
+          <li>In a three-person team, assembled the data for, implemented, and trained from scratch a DINO model with a ViT-S/8 backbone and MLP head on about 1.95 million images.</li>
+          <li>Placed 6th of 39 teams on held-out CUB-200 classification in a class-wide competition (<a class="plink" href="https://github.com/msw1age/SSL_Vision" target="_blank" rel="noopener">code</a>).</li>
         </ul>
       </div>
       <div class="proj reveal" data-d="1">
@@ -339,6 +346,14 @@
         <ul>
           <li>Derived, via matrix calculus, all gradients needed for backpropagation through a two-layer MLP with MSE loss and ReLU activations.</li>
           <li>Implemented the computation in NumPy and verified that every result matched PyTorch exactly.</li>
+        </ul>
+      </div>
+      <div class="proj reveal">
+        <span class="ptag">2026 · Tooling · Local LLMs</span>
+        <div class="pname">plainclaude</div>
+        <ul>
+          <li>Windows reading aid that reads Claude Desktop's accessibility tree and rewrites each finished reply in plain language with a local LLM (Ollama), rendered with markdown and LaTeX.</li>
+          <li>Open source under the MIT license (<a class="plink" href="https://github.com/msw1age/plainclaude" target="_blank" rel="noopener">code</a>).</li>
         </ul>
       </div>
     </div>
@@ -356,11 +371,11 @@
       </div>
       <div class="skill-col">
         <h4>Libraries</h4>
-        <div class="chips"><span class="chip">PyTorch</span><span class="chip">NumPy</span><span class="chip">SciPy</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span><span class="chip">Scikit-learn</span></div>
+        <div class="chips"><span class="chip">PyTorch</span><span class="chip">NumPy</span><span class="chip">SciPy</span><span class="chip">Numba</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span><span class="chip">Scikit-learn</span></div>
       </div>
       <div class="skill-col">
         <h4>Methods</h4>
-        <div class="chips"><span class="chip">Deep Learning</span><span class="chip">Supervised &amp; Unsupervised</span><span class="chip">Regression Analysis</span><span class="chip">Predictive Modeling</span><span class="chip">HPC</span><span class="chip">A/B Testing</span></div>
+        <div class="chips"><span class="chip">Deep Learning</span><span class="chip">Supervised &amp; Unsupervised</span><span class="chip">Regression Analysis</span><span class="chip">Predictive Modeling</span><span class="chip">Bayesian Optimization</span><span class="chip">GPU Simulation</span><span class="chip">Statistical Testing</span></div>
       </div>
       <div class="skill-col">
         <h4>Tools</h4>
@@ -380,7 +395,7 @@
           <div class="edu-item reveal">
             <div class="deg">Ph.D. in Mathematics</div>
             <div class="sch">New York University · Courant Institute</div>
-            <div class="det"><span>Expected <b>May 2028</b></span><span>GPA <b>3.92 / 4.0</b></span></div>
+            <div class="det"><span>Expected <b>May 2029</b></span><span>GPA <b>3.91 / 4.0</b></span></div>
           </div>
           <div class="edu-item reveal" data-d="1">
             <div class="deg">B.S. Applied Mathematics &amp; Neuroscience</div>
@@ -400,6 +415,10 @@
             <span class="yr">2023</span>
             <div class="body"><div class="t">Boeing Excellence Award for Outstanding Research</div><div class="o">UW Applied Mathematics</div></div>
           </div>
+          <div class="award reveal" data-d="2">
+            <span class="yr">2023</span>
+            <div class="body"><div class="t">Phi Beta Kappa</div><div class="o">University of Washington</div></div>
+          </div>
         </div>
       </div>
     </div>
@@ -415,7 +434,8 @@
     </div>
     <div class="clinks">
       <a class="clink reveal" data-d="1" href="mailto:matt.helton@nyu.edu"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>matt.helton@nyu.edu</a>
-      <a class="clink reveal" data-d="2" href="#" data-edit="linkedin"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3"/></svg>https://www.linkedin.com/in/matt-helton-8a530b99/</a>
+      <a class="clink reveal" data-d="2" href="https://www.linkedin.com/in/matt-helton-8a530b99/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 0 1 4 0v3"/></svg>linkedin.com/in/matt-helton-8a530b99</a>
+      <a class="clink reveal" data-d="3" href="https://github.com/msw1age" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>github.com/msw1age</a>
     </div>
   </div>
 </section>
